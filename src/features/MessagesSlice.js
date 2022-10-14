@@ -17,9 +17,13 @@ export const messagesSlice = createSlice({
 
         resetHasNewMessages: (state) => {
             state.hasNewMessages = false
+        },
+
+        newMessageSent: (state) => {
+            state.hasNewMessages = true
         }
     }
 })
 
-export const { changeMessages, resetHasNewMessages } = messagesSlice.actions
+export const { changeMessages, resetHasNewMessages, newMessageSent } = messagesSlice.actions
 export default messagesSlice.reducer

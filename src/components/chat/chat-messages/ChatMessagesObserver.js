@@ -1,6 +1,6 @@
 import React, { useState } from "react"
-import Message from '../../message/Message'
-import { getMessages, isUsersMessage } from "../../../logic/message_api"
+import Message from '../message/Message'
+import { isUsersMessage } from "../../../logic/message_api"
 import './ChatMessagesObserver.css'
 
 let page_number = 0
@@ -28,20 +28,11 @@ const renderNoMessages = () => {
     )
 }
 
+let i = 0;
 
 export default function ChatMessagesObserver(props) {
-    const [user , setUser] = useState(props.user)
-    const [messages, setMessages] = useState([])
-
-    if(messages.length === 0) {
-        let promise = getMessages(page_number, page_size)
-
-        promise.then((response) => {
-            setMessages(response.data)
-        })
-    } else {
-        console.log(messages)
-    }
+    const user = props.user
+    const messages = props.messages
 
     return(
         <div className='container p-0 border overflow-auto' id='chat-messages-main'>

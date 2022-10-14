@@ -5,8 +5,11 @@ import './ChatWriter.css'
 
 
 export default function ChatWriter(props) {
-    const [ user, setUser ] = useState(props.user)
     const [ messageContent, setMessageContent ] = useState('')
+
+    const user = props.user
+    const onMessagesUpdate = props.onMessagesUpdate
+
 
     const handleMessageContent = (event) => {
         setMessageContent(event.target.value)
@@ -21,6 +24,7 @@ export default function ChatWriter(props) {
         let promise = postMessage(message)
         
         promise.then((response) => {
+            onMessagesUpdate()
             setMessageContent('')
         })
     }
